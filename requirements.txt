@@ -1,5 +1,6 @@
 # Web framework
-flask==0.12
+grpcio
+grpcio-tools
 
 # Force me to write code good
 pep8

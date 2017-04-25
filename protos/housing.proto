@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package housing;
+
+service Housing {
+  rpc EstimatePrice(EstimatePriceRequest) returns (EstimatePriceResponse) {}
+}
+
+message EstimatePriceRequest {
+  int64 from_timestamp = 1;  // Unix Epoch
+  int64 to_timestamp = 2;  // Unix Epoch
+  int32 price_in_pounds = 3;  // TODO(riley): Use message w/ currency code
+  string borough = 4;  // TODO(riley): convert to enum. Boroughs should be fixed
+
+}
+
+message EstimatePriceResponse {
+  EstimatePriceError error = 1;
+  string error_message = 2;
+
+  int32 estimated_price_in_pounds = 3;
+}
+
+enum EstimatePriceError {
+  NO_ERROR = 0;
+
+  // Simple data validation
+  MISSING_FROM_TIMESTAMP = 1;
+  MISSING_TO_TIMESTAMP = 2;
+  MISSING_PRICE_IN_POUNDS = 3;
+  MISSING_BOROUGH = 4;
+
+  // More specific errors
+  BOROUGH_NOT_FOUND = 5;
+  FROM_TIMESTAMP_NOT_FOUND = 6;
+  TO_TIMESTAMP_NOT_FOUND = 7;
+  TIMESTAMPS_OUT_OF_ORDER = 8;
+}
+
