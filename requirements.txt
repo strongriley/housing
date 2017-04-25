@@ -1,0 +1,11 @@
+# Web framework
+flask==0.12
+
+# Force me to write code good
+pep8
+
+# requests plus some crypto stuff for better security. Used to download csv
+requests[security]
+
+# For testing
+responses==0.5.1
