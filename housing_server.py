@@ -64,9 +64,10 @@ class HousingServicer(housing_pb2_grpc.HousingServicer):
         except BoroughNotFound:
             response.error = housing_pb2.BOROUGH_NOT_FOUND
             return response
-        print to_idx
-        print from_idx
-        response.estimated_price_in_pounds = int(request.price_in_pounds * to_idx / from_idx)
+        print "from index: %s" % from_idx
+        print "to index: %s" % to_idx
+        estimated_price = int(to_idx / from_idx * request.price_in_pounds)
+        response.estimated_price_in_pounds = estimated_price
         return response
 
 
@@ -80,10 +81,10 @@ def serve():
     print "Service started"
     try:
         while True:
-          time.sleep(_ONE_DAY_IN_SECONDS)
+            time.sleep(_ONE_DAY_IN_SECONDS)
     except KeyboardInterrupt:
         print "Service stopping"
         server.stop(0)
 
 if __name__ == '__main__':
-  serve()
+    serve()
