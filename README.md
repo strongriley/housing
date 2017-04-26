@@ -1,6 +1,38 @@
 # Nested
 Coding Challenge
 
+## Design
+
+There are 2 main files: `housing_server.py` and `housing_data.py`.
+
+### `housing_server.py`
+On startup, we load data from `housing_data.py` (more on that below). It's setup as a gRPC server, taking in `EstimatePriceRequest`s and returning `EstimatePriceResponse`s.
+
+
+### `housing_data.py`
+On initialization, the CSV is downloaded if missing and loaded into memory into a dictionary of dictionaries like below:
+
+``` 
+{
+	'borough1': {
+		date(2000, 1, 1): Decimal('29.0'),
+		date(2000, 2, 1): Decimal('30.0'),
+		...
+	},
+	'borough2': {
+		date(2000, 1, 1): Decimal('9.012'),
+		date(2000, 2, 1): Decimal('12.2'),
+		...
+	},
+	...
+}
+				
+```
+
+While using up more memory and time in the beginning, this allows constant time lookups and very low latency.
+
+
+## Using 
 
 ### Installing
 
