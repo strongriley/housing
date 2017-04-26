@@ -1,6 +1,7 @@
 from os.path import isfile
 import csv
 from datetime import datetime
+from decimal import Decimal
 
 import requests
 
@@ -43,7 +44,7 @@ class HousingData(object):
             for row in reader:
                 name = row[1].lower()
                 date_obj = datetime.strptime(row[0], '%d/%m/%Y').date()
-                idx = float(row[4])
+                idx = Decimal(row[4])
                 if name not in self._cache:
                     self._cache[name] = dict()
                 self._cache[name][date_obj] = idx
