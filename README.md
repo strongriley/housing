@@ -1,6 +1,7 @@
 # Nested
 Coding Challenge
 
+
 ### Installing
 
 ```
@@ -8,6 +9,13 @@ virtualenv venv
 source venv/bin/activate
 pip install -r requirements_lock.txt
 ```
+
+
+### Running
+Start the server: `python housing_server.py`
+
+Run the example client: `python housing_client_example.py`
+
 
 ### Dependencies
 Modify the `requirements.txt`file to add or update new deps.
