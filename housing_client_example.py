@@ -31,7 +31,7 @@ def fetch_estimate(stub, from_date, to_date, borough, price):
 def main():
     channel = grpc.insecure_channel('localhost:50051')
     stub = housing_pb2_grpc.HousingStub(channel)
-    print "Expecting: 366,726"
+    print "Expecting: 366,700 (PDF states 366,726 but missing precision)"
     fetch_estimate(stub, date(2000, 1, 1), date(2016, 1, 1), 'Islington',
                    100000)
     print "Expecting: MISSING_FROM_TIMESTAMP"
