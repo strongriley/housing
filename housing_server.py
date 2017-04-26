@@ -4,8 +4,8 @@ import time
 
 import grpc
 
-import housing_pb2
-import housing_pb2_grpc
+from generated import housing_pb2
+from generated import housing_pb2_grpc
 from housing_data import HousingData
 from housing_data import BoroughNotFound
 from housing_data import DateNotFound

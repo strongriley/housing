@@ -4,9 +4,8 @@ from datetime import date
 import calendar
 
 
-import housing_pb2
-import housing_pb2_grpc
-
+from generated import housing_pb2
+from generated import housing_pb2_grpc
 
 
 def fetch_estimate(stub, from_date, to_date, borough, price):
