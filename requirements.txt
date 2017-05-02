@@ -10,3 +10,6 @@ requests[security]
 
 # For testing
 responses==0.5.1
+
+# HTML parsing
+beautifulsoup4
